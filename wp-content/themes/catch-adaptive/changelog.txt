@@ -1,0 +1,22 @@
+== Changelog ==
+
+= 0.4 =
+* Changed screenshot
+
+= 0.3 =
+* Bug Fixed: Escaped missing options in slider, social icons and breadcrumb implementation
+* Changed the link for html5shiv in readme file
+* Made strings in demo featured content and slider translatable
+* Optimized Customizer Scripts
+* Removed unnecessary codes and bundled image file
+* Renamed Catchcatchadaptive to Catchadaptive
+
+= 0.2 =
+* Official release at CatchThemes.com
+* Bug Fixed: Color Scheme 
+* Bug Fixed: Slider control font size
+* Bug Fixed: Page slider show excerpt option not working
+* Bug Fixed: Infinite Scroll issue with masonry
+
+= 0.1 =
+* Initial Release
