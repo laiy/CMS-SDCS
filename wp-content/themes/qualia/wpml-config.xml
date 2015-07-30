@@ -1,0 +1,34 @@
+<wpml-config>
+	<admin-texts>
+		<!-- Qualia Theme Options -->
+		<key name="qualia_option">
+			<!-- Site Strings -->
+			<key name="author_archive_title" />
+			<key name="post_category_archive_title" />
+			<key name="post_tag_archive_title" />
+			<key name="post_taxonomy_archive_title" />
+			<key name="post_year_archive_title" />
+			<key name="post_month_archive_title" />
+			<key name="post_day_archive_title" />
+			<key name="search_result_title" />
+			<key name="404_title" />
+			<key name="top_header_text" />
+			<key name="blog_archive_sticky_label" />
+			<key name="copyright_text" />
+		</key>
+		<!-- Qualia Woocommerce Options -->
+		<key name="qualia_woocommerce_option">
+			<key name="product_sale_label" />
+			<key name="product_archive_title" />
+			<key name="product_category_title" />
+			<key name="product_tag_title" />
+			<key name="call_for_price_text" />
+		</key>
+		<!-- Qualia Vafpress Portfolio Options -->
+		<key name="vp_pf_option">
+			<key name="qualia_home_title" />
+			<key name="qualia_category_title" />
+			<key name="qualia_tag_title" />
+		</key>
+	</admin-texts>
+</wpml-config>

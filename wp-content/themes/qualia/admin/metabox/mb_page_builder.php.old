@@ -1,0 +1,178 @@
+<?php
+
+return array(
+	'id'          => '_page_builder',
+	'types'       => array('page'),
+	'title'       => __('Page Builder', 'qualia_td'),
+	'priority'    => 'high',
+	'template'    => array(
+
+		array(
+			'type'        => 'toggle',
+			'name'        => 'use_page_builder',
+			'label'       => __('Use Page Builder', 'qualia_td'),
+			'description' => __('Override the WP Editor content', 'qualia_td'),
+		),
+
+		// Sections
+		array(
+			'type'      => 'group',
+			'repeating' => true,
+			'sortable'  => true,
+			'name'      => 'sections',
+			'title'     => __('Section', 'qualia_td'),
+			// 'dependency'=> array(
+			// 	'field'    => 'use_page_builder',
+			// 	'function' => 'vp_dep_boolean'
+			// ),
+			'fields'    => array(
+
+				// Sections -> Content
+				array(
+					'type'  => 'wpeditor',
+					'name'  => 'content',
+				),
+
+				// Sections -> Styles
+				array(
+					'type'      => 'group',
+					'repeating' => false,
+					'length'    => 1,
+					'name'      => 'styles',
+					'title'     => __('Styles', 'qualia_td'),
+					'fields'    => array(
+
+						// Section -> Styles -> Color Set
+						array(
+							'type'  => 'select',
+							'name'  => 'color_set',
+							'label' => __('Color Set', 'qualia_td'),
+							'items' => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_color_palette',
+									),
+								),
+							),
+							'default'   => array(
+								'1',
+							),
+						),
+						
+						// Section -> Styles -> Additional Classes
+						array(
+							'type'  => 'textbox',
+							'name'  => 'additional_classes',
+							'label' => __('Additional Classes', 'qualia_td'),
+						),
+
+						// Seciton -> Styles -> Auto Wrapper
+						array(
+							'type'    => 'toggle',
+							'name'    => 'auto_wrapper',
+							'label'   => __('Auto Wrapper?', 'qualia_td'),
+							'default' => 1,
+						),
+
+						// Seciton -> Styles -> Separator
+						array(
+							'type'    => 'radiobutton',
+							'name'    => 'separator',
+							'label'   => __('Separator', 'qualia_td'),
+							'items'   => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_section_separator_style',
+									),
+								),
+							),
+							'default' => array(
+								'none',
+							),
+						),
+
+						// Section -> Styles -> Top Spacing
+						array(
+							'type'    => 'slider',
+							'name'    => 'top_spacing',
+							'label'   => __('Top Spacing (px)', 'qualia_td'),
+							'min'     => '0',
+							'max'     => '500',
+							'default' => '60',
+						),
+
+						// Section -> Styles -> Bottom Spacing
+						array(
+							'type'    => 'slider',
+							'name'    => 'bottom_spacing',
+							'label'   => __('Bottom Spacing (px)', 'qualia_td'),
+							'min'     => '0',
+							'max'     => '500',
+							'default' => '60',
+						),
+						
+						array(
+							'type'  => 'upload',
+							'name'  => 'background_image',
+							'label' => __('Background Image', 'qualia_td'),
+						),
+						array(
+							'type'  => 'select',
+							'name'  => 'background_position',
+							'label' => __('Background Position', 'qualia_td'),
+							'items' => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_background_position',
+									),
+								),
+							),
+						),
+						array(
+							'type'  => 'select',
+							'name'  => 'background_attachment',
+							'label' => __('Background Attachment', 'qualia_td'),
+							'items' => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_background_attachment',
+									),
+								),
+							),
+						),
+						array(
+							'type'  => 'select',
+							'name'  => 'background_repeat',
+							'label' => __('Background Repeat', 'qualia_td'),
+							'items' => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_background_repeat',
+									),
+								),
+							),
+						),
+						array(
+							'type'  => 'select',
+							'name'  => 'background_size',
+							'label' => __('Background Size', 'qualia_td'),
+							'items' => array(
+								'data' => array(
+									array(
+										'source' => 'function',
+										'value'  => 'qualia_source_background_size',
+									),
+								),
+							),
+						),
+					),
+				),
+			),
+		),
+	),
+);

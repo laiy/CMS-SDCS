@@ -1,0 +1,178 @@
+/*
+ * Swiper - Mobile Touch Slider CSS
+ * http://www.idangero.us/sliders/swiper
+ *
+ * Vladimir Kharlampidi, The iDangero.us
+ * http://www.idangero.us/
+ * 
+ * Copyright 2012-2013, Vladimir Kharlampidi
+ * The iDangero.us
+ * http://www.idangero.us
+ *
+ * Licensed under GPL & MIT
+ *
+*/
+
+/* ===============================================================
+Basic Swiper Styles 
+================================================================*/
+.swiper-container {
+	margin:0 auto;
+	position:relative;
+	overflow:hidden;
+	-webkit-backface-visibility:hidden;
+	-moz-backface-visibility:hidden;
+	-ms-backface-visibility:hidden;
+	-o-backface-visibility:hidden;
+	backface-visibility:hidden;
+	/* Fix of Webkit flickering */
+	z-index:1;
+}
+.swiper-wrapper {
+	position:relative;
+	width:100%;
+	-webkit-transition-property:-webkit-transform, left, top;
+	-webkit-transition-duration:0s;
+	-webkit-transform:translate3d(0px,0,0);
+	-webkit-transition-timing-function:ease;
+	
+	-moz-transition-property:-moz-transform, left, top;
+	-moz-transition-duration:0s;
+	-moz-transform:translate3d(0px,0,0);
+	-moz-transition-timing-function:ease;
+	
+	-o-transition-property:-o-transform, left, top;
+	-o-transition-duration:0s;
+	-o-transform:translate3d(0px,0,0);
+	-o-transition-timing-function:ease;
+	-o-transform:translate(0px,0px);
+	
+	-ms-transition-property:-ms-transform, left, top;
+	-ms-transition-duration:0s;
+	-ms-transform:translate3d(0px,0,0);
+	-ms-transition-timing-function:ease;
+	
+	transition-property:transform, left, top;
+	transition-duration:0s;
+	transform:translate3d(0px,0,0);
+	transition-timing-function:ease;
+}
+.swiper-free-mode > .swiper-wrapper {
+	-webkit-transition-timing-function: ease-out;
+	-moz-transition-timing-function: ease-out;
+	-ms-transition-timing-function: ease-out;
+	-o-transition-timing-function: ease-out;
+	transition-timing-function: ease-out;
+	margin: 0 auto;
+}
+.swiper-slide {
+	float: left;
+}
+
+/* IE10 Windows Phone 8 Fixes */
+.swiper-wp8-horizontal {
+	-ms-touch-action: pan-y;
+}
+.swiper-wp8-vertical {
+	-ms-touch-action: pan-x;
+}
+
+/* ===============================================================
+Your custom styles, here you need to specify container's and slide's
+sizes, pagination, etc.
+================================================================*/
+.swiper-container {
+	/* Specify Swiper's Size: */
+
+	/*width:940px;*/
+	/*height: 295px;*/
+}
+.swiper-slide {
+	/* Specify Slides's Size: */
+	
+	width: 240px !important;
+	/*height: 438px;*/
+	cursor: -webkit-grab !important;
+	cursor: -moz-grab;
+	/*padding: 5px;*/
+}
+.swiper-slide a {
+	cursor: -webkit-grab !important;
+	cursor: -moz-grab;
+}
+.swiper-slide-active {
+	/* Specific active slide styling: */
+}
+.swiper-slide-visible {
+	/* Specific visible slide styling: */	
+
+}
+/* ===============================================================
+Pagination Styles
+================================================================*/
+.swiper-pagination-switch {
+	/* Stylize pagination button: */	
+
+}
+.swiper-active-switch {
+	/* Specific active button style: */	
+	
+}
+.swiper-visible-switch {
+	/* Specific visible button style: */	
+	
+}
+
+.swiper-wrapper {
+	height: auto !important;
+}
+
+.portfolio-archive .swiper-slide .portfolio {
+	padding: 0 5px 0 5px;
+}
+
+.portfolio-archive.pagination-carousel {
+	position: relative;
+}
+
+.portfolio-archive.pagination-carousel .swiper-left, .portfolio-archive.pagination-carousel .swiper-right {
+	cursor: pointer;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	z-index: 10;
+	margin-top: -2rem;
+	height: 4rem;
+	width: 2.4rem;
+	padding: 1rem 0 1rem 0;
+	border-radius: 0 0.25rem 0.25rem 0;
+	opacity: 0.7; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+	color: #ffffff;
+	text-align: center;
+}
+.portfolio-archive.pagination-carousel .swiper-left:hover, .portfolio-archive.pagination-carousel .swiper-right:hover {
+	opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+.portfolio-archive.pagination-carousel .swiper-right {
+	left: auto;
+	right: 0;
+	border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.wrapper .portfolio-archive.pagination-carousel .swiper-container {
+	margin: 0 4rem;
+}
+
+.wrapper .portfolio-archive .swiper-left, .wrapper .portfolio-archive .swiper-right {
+	left: 0;
+	top: 50%;
+	margin-top: -1.5rem;
+	height: 3rem;
+	width: 3rem;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+}
+.wrapper .portfolio-archive .swiper-right {
+	left: auto;
+	right: 0;
+}
