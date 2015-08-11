@@ -1,39 +1,32 @@
 <!-- //底部模板 -->
 <div id="footer" class="clearfix">
-    <div class="con_box ">
-	<?php wp_reset_query();if ( is_home()){ ?>
-    	<div class="flink">
-			<strong>友情链接:</strong>
-		<?php Hcms_links("txt",24) ?>
-		<a target="_blank" title="点击此处申请链接" href="/links" class="curflink">申请链接</a>
-      </div>
-	  <?php } ?>
-          <div class="footer_bug">
-			<a rel="nofollow" href="/about" target="_blank">关于倡萌</a>  |
-            <a href="/sitemap.html" target="_blank">Sitemap</a> | 
-            <a href="/sitemap_baidu.xml" target="_blank">百度地图</a> | 
-            <a href="/sitemap.xml" target="_blank">谷歌地图</a>   
-          </div>
-
+    <div id="links_bar">
+		<a href="<?=get_category_link(get_cat_ID('信息资源'))?>"><?php _e("[:zh]信息资源[:en]Resources"); ?></a> |
+        <a href="<?=get_category_link(get_cat_ID('联系我们'))?>"><?php _e("[:zh]联系我们[:en]Contact Us"); ?></a> |
+        <a href="<?=get_category_link(get_cat_ID('表格下载'))?>"><?php _e("[:zh]表格下载[:en]Tables Download"); ?></a> |
+		<strong><a href="javascript:void(0);"><?php _e("[:zh]更多链接[:en]Links"); ?></a></strong>
+		<select>
+			<option value="0"><?php _e('[:zh]校内导航[:en]Navigation'); ?></option>
+			<option value="http://jwc.sysu.edu.cn"><?php _e('[:zh]教务处[:en]Dean\'s Office'); ?></option>
+			<option value="http://xsc2000.sysu.edu.cn"><?php _e('[:zh]学生处[:en]Student Affair Office'); ?></option>
+			<option value="http://library.sysu.edu.cn"><?php _e('[:zh]图书馆[:en]SYSU Libraries'); ?></option>
+			<option value="http://admission.sysu.edu.cn"><?php _e('[:zh]招生办[:en]Admissions'); ?></option>
+		</select>
+		<select>
+			<option value="0"><?php _e('[:zh]校外链接[:en]Others'); ?></option>
+		</select>
+		<select>
+			<option value="0"><?php _e('[:zh]推荐网站[:en]Recommended'); ?></option>
+			<option value="http://myspace.sysu.edu.cn"><?php _e('[:zh]5D空间[:en]5D Space'); ?></option>
+			<option value="http://ceremony.sysu.edu.cn"><?php _e('[:zh]中山大学学位授予仪式[:en]Ceremony'); ?></option>
+		</select>
     </div>
-    	<div class="copyright">
-      	<p>   倡萌的自留地为个人站点，本站内容仅供观摩学习交流之用，将不对任何资源负法律责任。<br/>如有侵犯您的版权，请及时联系倡萌，倡萌将尽快处理。<br/></p>
-<p class="powered">Copyright&copy; 2010-2012  <a href="http://www.cmhello.com/" title="倡萌的自留地">CMHELLO.COM</a>. <?php echo stripslashes(get_option('swt_track_code')); ?>  <?php echo get_num_queries(); ?>次查询</p>        
-
-<!-- /powered -->
-   </div>
-   <div class="footer_right">
-   <img src="<?php bloginfo('template_url'); ?>/images/footer_logo.jpg" width="166" height="67" alt="倡萌的自留地" />
-   <p>Powered by <a href="http://wordpress.org" title="WordPress博客程序" target="_blank">WordPress</a> & <a href="http://www.cmhello.com" title="Hcms主题" target="_blank">Hcms主题</a>.</p>
-   </div>
-   <?php wp_footer(); ?>
-		<div id="shangxia"><div id="shang" title="↑ 返回顶部"></div>
-		<?php if ( is_singular() ){ ?>
-		<div id="comt" title="查看评论"></div>
-		<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/comments-ajax.js"></script>
-		<?php } ?>
-		<div id="xia" title="↓ 移至底部"></div>
-		<div id="myrss" title="<?php echo get_option('swt_rss'); ?>" onClick="window.open('<?php echo get_option('swt_rsssub'); ?>','_blank');"></div></div>
+    <div id="footer_copyright">
+		<p><?php _e("[:zh]2012 中山大学移动信息工程学院 版权所有[:en]2012 School of Mobile Information Engineering Copy Right"); ?></p>
+		<p><?php _e("[:zh]地址：广东省珠海市唐家湾中山大学珠海校区行政楼五楼 中山大学移动信息工程学院[:en]Address: School of Mobile Information Engineering, 5th floor of Administrative Building, Sun Yet-sen University Zhuhai Campus Tang Jia Bay, Zhu Hai, Guang Dong."); ?></p>
+		<p><?php _e("[:zh]E-mail：smiea@mail.sysu.edu.cn 电话/传真：(+86756) 3668567 邮编：519082[:en]E-mail：smiea@mail.sysu.edu.cn Tel/Fax：(+86756) 3668567 Post Code：519082"); ?></p>
+    </div>
+	<?php wp_footer(); ?>
 </div>
 </body>
 </html>

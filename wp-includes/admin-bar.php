@@ -179,7 +179,8 @@ function wp_admin_bar_my_account_item( $wp_admin_bar ) {
 	if ( ! $user_id )
 		return;
 
-	$avatar = get_avatar( $user_id, 26 );
+	//$avatar = get_avatar( $user_id, 26 );
+	$avatar = '';
 	$howdy  = sprintf( __('Howdy, %1$s'), $current_user->display_name );
 	$class  = empty( $avatar ) ? '' : 'with-avatar';
 
@@ -214,7 +215,8 @@ function wp_admin_bar_my_account_menu( $wp_admin_bar ) {
 		'id'     => 'user-actions',
 	) );
 
-	$user_info  = get_avatar( $user_id, 64 );
+	//$user_info  = get_avatar( $user_id, 64 );
+	$user_info = '';
 	$user_info .= "<span class='display-name'>{$current_user->display_name}</span>";
 
 	if ( $current_user->display_name !== $current_user->user_login )

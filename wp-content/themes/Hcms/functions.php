@@ -20,7 +20,7 @@ function curPageURL() {$pageURL = 'http';
     if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
     $pageURL .= "://";$this_page = $_SERVER["REQUEST_URI"];
     if (strpos($this_page, "?") !== false) $this_page = reset(explode("?", $this_page));
-    if ($_SERVER["SERVER_PORT"] != "80") {$pageURL .= $_SERVER["SERVER_NAME"] . ":" .$_SERVER["SERVER_PORT"] . $this_page;} 
+    if ($_SERVER["SERVER_PORT"] != "80") {$pageURL .= $_SERVER["SERVER_NAME"] . ":" .$_SERVER["SERVER_PORT"] . $this_page;}
     else {$pageURL .= $_SERVER["SERVER_NAME"] . $this_page;}
     return $pageURL;};
 //支持外链缩略图
@@ -47,7 +47,7 @@ return $avatar_defaults;};
 //评论回复/头像缓存
 function weisay_comment($comment, $args, $depth) {$GLOBALS['comment'] = $comment;
 	global $commentcount,$wpdb, $post;
-     if(!$commentcount) { 
+     if(!$commentcount) {
           $comments = $wpdb->get_results("SELECT * FROM $wpdb->comments WHERE comment_post_ID = $post->ID AND comment_type = '' AND comment_approved = '1' AND !comment_parent");
           $cnt = count($comments);
           $page = get_query_var('cpage');
@@ -66,9 +66,9 @@ function weisay_comment($comment, $args, $depth) {$GLOBALS['comment'] = $comment
 				$f = md5(strtolower($comment->comment_author_email));
 				$a = $p . $f .'.jpg';
 				$e = ABSPATH . $a;
-				if (!is_file($e)){ 
+				if (!is_file($e)){
 				$d = get_bloginfo('wpurl'). '/avatar/default.jpg';
-				$s = '40'; 
+				$s = '40';
 				$r = get_option('avatar_rating');
 				$g = 'http://www.gravatar.com/avatar/'.$f.'.jpg?s='.$s.'&d='.$d.'&r='.$r;
                 $avatarContent = file_get_contents($g);
@@ -80,7 +80,7 @@ function weisay_comment($comment, $args, $depth) {$GLOBALS['comment'] = $comment
                 <?php { echo ''; } ?>
 			<?php } else { include(TEMPLATEPATH . '/comment_gravatar.php'); } ?>
 	<div class="floor">
-	<?php 
+	<?php
 	if(!$parent_id = $comment->comment_parent){switch ($commentcount){
      case 2 :echo "沙发";--$commentcount;break;
      case 3 :echo "板凳";--$commentcount;break;
@@ -91,7 +91,7 @@ function weisay_comment($comment, $args, $depth) {$GLOBALS['comment'] = $comment
 	<strong><?php comment_author_link() ?></strong>:<?php edit_comment_link('编辑','&nbsp;&nbsp;',''); ?></div>
 	<?php if ( $comment->comment_approved == '0' ) : ?>
 		<span style="color:#C00; font-style:inherit">您的评论正在等待审核中...</span>
-		<br />			
+		<br />
 		<?php endif; ?>
 		<?php comment_text() ?>
 		<div class="clear"></div><span class="datetime"><?php comment_date('Y-m-d') ?> <?php comment_time() ?> </span> <span class="reply"><?php comment_reply_link(array_merge( $args, array('reply_text' => '[回复]', 'add_below' =>$add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))); ?></span>
@@ -128,15 +128,15 @@ function par_pagenavi($range = 9){
 };
 //读者排行
 function hcms_readers($out,$timer,$limit){
-	global $wpdb;    
-	$counts = $wpdb->get_results("SELECT COUNT(comment_author) AS cnt, comment_author,comment_author_url,comment_author_email FROM {$wpdb->prefix}comments WHERE comment_date > date_sub( NOW(), INTERVAL $timer MONTH ) AND comment_approved = '1' AND comment_author_email AND comment_author_url != '".$out."' AND comment_type = ''  AND user_id = '0' GROUP BY comment_author ORDER BY cnt DESC LIMIT $limit");      
+	global $wpdb;
+	$counts = $wpdb->get_results("SELECT COUNT(comment_author) AS cnt, comment_author,comment_author_url,comment_author_email FROM {$wpdb->prefix}comments WHERE comment_date > date_sub( NOW(), INTERVAL $timer MONTH ) AND comment_approved = '1' AND comment_author_email AND comment_author_url != '".$out."' AND comment_type = ''  AND user_id = '0' GROUP BY comment_author ORDER BY cnt DESC LIMIT $limit");
 	foreach ($counts as $count) {
             $c_url = $count->comment_author_url;
 			if ($c_url == '') $c_url = 'javascript:;';
             $mostactive .= '<a rel="nofollow" href="'. $c_url . '" title="' . $count->comment_author .' 留下 '. $count->cnt . ' 个脚印" target="_blank">' . get_avatar($count->comment_author_email, 48, '', $count->comment_author . ' 留下 ' . $count->cnt . ' 个脚印') . '</a>';
         }
         echo $mostactive;
-    } 
+    }
 //边栏评论
 function r_comments($outer){
 	global $wpdb;
@@ -244,17 +244,17 @@ add_action('comment_post', 'comment_mail_notify');
 function record_visitors(){
 	if (is_singular()) {global $post;
 	 $post_ID = $post->ID;
-	  if($post_ID) 
+	  if($post_ID)
 	  {
 		  $post_views = (int)get_post_meta($post_ID, 'views', true);
-		  if(!update_post_meta($post_ID, 'views', ($post_views+1))) 
+		  if(!update_post_meta($post_ID, 'views', ($post_views+1)))
 		  {
 			add_post_meta($post_ID, 'views', 1, true);
 		  }
 	  }
 	}
 }
-add_action('wp_head', 'record_visitors');  
+add_action('wp_head', 'record_visitors');
 function post_views($before = '(点击 ', $after = ' 次)', $echo = 1)
 {
   global $post;
@@ -294,18 +294,18 @@ add_filter('pre_site_transient_update_core', create_function('$a', "return null;
 //过滤代码的中文符号
 remove_filter('the_content', 'wptexturize');
 //移除顶部多余信息
-function wpbeginner_remove_version() { 
-return ; 
-} add_filter('the_generator', 'wpbeginner_remove_version');//wordpress的版本号 
-remove_action('wp_head', 'index_rel_link');//当前文章的索引 
-remove_action('wp_head', 'feed_links_extra', 3);// 额外的feed,例如category, tag页 
-remove_action('wp_head', 'start_post_rel_link', 10, 0);// 开始篇 
-remove_action('wp_head', 'parent_post_rel_link', 10, 0);// 父篇 
-remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // 上、下篇. 
+function wpbeginner_remove_version() {
+return ;
+} add_filter('the_generator', 'wpbeginner_remove_version');//wordpress的版本号
+remove_action('wp_head', 'index_rel_link');//当前文章的索引
+remove_action('wp_head', 'feed_links_extra', 3);// 额外的feed,例如category, tag页
+remove_action('wp_head', 'start_post_rel_link', 10, 0);// 开始篇
+remove_action('wp_head', 'parent_post_rel_link', 10, 0);// 父篇
+remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0); // 上、下篇.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//rel=pre
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink 
-remove_action('wp_head', 'rel_canonical' ); 
-wp_deregister_script('l10n'); 
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0 );//rel=shortlink
+remove_action('wp_head', 'rel_canonical' );
+wp_deregister_script('l10n');
 //添加编辑器快捷按钮
 add_action('admin_print_scripts', 'my_quicktags');
 function my_quicktags() {

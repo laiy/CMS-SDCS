@@ -3,13 +3,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 	<link href="<?php bloginfo('stylesheet_url'); ?>" rel="stylesheet" type="text/css" />
-	<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.4.2/jquery.min.js"></script>
-	<script type="text/javascript">window.jQuery || document.write('<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.js">\x3C/script>')</script>
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery_cmhello.js"></script>
+	<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/jquery.js"></script>
+	<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/jquery_cmhello.js"></script>
 	<?php if ( is_home() ){ ?>
-	<script type="text/javascript" src="<?php bloginfo('template_url'); ?>/js/jquery.cycle.all.min.js"></script>
+	<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/jquery.cycle2.min.js"></script>
+	<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/jquery.cycle2.center.min.js"></script>
+	<script type="text/javascript" src="<?=bloginfo('template_url')?>/js/home.js"></script>
 	<?php } ?>
-	<script type="text/javascript">HcmsLazyload("<?php bloginfo('template_url'); ?>/images/space.gif");</script> 
+	<script type="text/javascript">HcmsLazyload("<?=bloginfo('template_url')?>/images/space.gif");</script>
 	<!--[if IE 6]>
 	<link href="<?php bloginfo('template_url'); ?>/ie6.css" rel="stylesheet" type="text/css" />
 	<script src="http://letskillie6.googlecode.com/svn/trunk/letskillie6.zh_CN.pack.js"></script>
@@ -34,7 +35,7 @@
 	}
 	elseif (is_single())
 	{
-     if ($post->post_excerpt) {$description = $post->post_excerpt;} 
+     if ($post->post_excerpt) {$description = $post->post_excerpt;}
 	 else {$description = substr(strip_tags($post->post_content),0,240);}
     $keywords = "";
     $tags = wp_get_post_tags($post->ID);
@@ -43,7 +44,8 @@
 	?>
 	<meta name="keywords" content="<?php echo $keywords ?>" />
 	<meta name="description" content="<?php echo $description?>" />
-	<link rel="shortcut icon" href="<?php bloginfo('url'); ?>/favicon.ico"/>
+	<link rel="icon" type="image/x-icon" href="<?=get_stylesheet_directory_uri()?>/images/favicon.png"/>
+	<link rel="shortcut icon" type="image/x-icon" href="<?=get_stylesheet_directory_uri()?>/images/favicon.png"/>
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo('name'); ?> Atom Feed" href="<?php bloginfo('atom_url'); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
@@ -52,25 +54,33 @@
 <body>
 	<div id="header" class="png_bg">
 		<div id="header_inner">
-    		<strong class="logo">
-			<a href="<?php bloginfo('url'); ?>" class="png_bg" title="<?php bloginfo('name'); ?>"><?php bloginfo('name'); ?></a>
+			<strong class="logo">
+			<a href="<?php bloginfo('url'); ?>" class="png_bg" title="<?php bloginfo('name'); ?>"><img src="<?=bloginfo('template_url')?>/images/logo.png"></a>
 			</strong>
-       <div class="header_bg png_bg"></div>
-       <div class="toplinks">
-       <div id="_userlogin">	
-			<a href="<?php echo get_option('swt_rsssub'); ?>" title="欢迎订阅我的博客" target="_blank">RSS订阅</a><span>|</span><a href="<?php bloginfo('home'); ?>/wp-login.php" title="登录管理" target="_blank">登录</a>
-       </div>
-       	<div id="top_nav">
-			<form name="formsearch" method="get" action="<?php bloginfo('home'); ?>">
-				<div class="form clearfix">
-           		<label for="s" ></label>
-           		<input type="text" name="s" class="search-keyword" onfocus="if (this.value == '请输入关键字进行搜索') {this.value = '';}" onblur="if (this.value == '') {this.value = '请输入关键字进行搜索';}" value="请输入关键字进行搜索" />   
-         		<button type="submit" class="select_class" onmouseout="this.className='select_class'" onmouseover="this.className='select_over'" />搜索</button>
+			<div class="header_bg png_bg"></div>
+			<div class="toplinks">
+				<div id="toplinks">
+					<div>
+						<a href="<?=bloginfo('home')?>/wp-login.php" target="_blank"><?php _e("[:zh]登录[:en]login"); ?></a>
+					</div>
+					<div>
+						<?=qtranxf_generateLanguageSelectCode('both', 'language_switcher')?>
+					</div>
+					<div>
+						<a href="http://www.sysu.edu.cn/" target="_blank"><?php _e("[:zh]中山大学[:en]SYSU"); ?></a>
+					</div>
 				</div>
-			</form>
-            </div>
-       </div>
-	   <?php wp_nav_menu('container_id=navmenu'); ?>
-	   <div class="clearfix"></div>
-    </div>
-</div>
+				<div id="top_nav">
+					<form name="formsearch" method="get" action="<?php bloginfo('home'); ?>">
+						<div class="form clearfix">
+							<label for="s" ></label>
+							<input type="text" name="s" class="search-keyword" placeholder="<?php _e("[:zh]请输入关键字进行搜索[:en]Search Keywords"); ?>" />
+							<button type="submit" class="select_class" onmouseout="this.className='select_class'" onmouseover="this.className='select_over'" /><?php _e("[:zh]搜索[:en]search"); ?></button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<?php wp_nav_menu('container_id=navmenu'); ?>
+			<div class="clearfix"></div>
+		</div>
+	</div>
